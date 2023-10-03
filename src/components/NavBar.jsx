@@ -5,23 +5,20 @@ import Brand from "./brand"
 
 const NavBar = ()=>{
     return(
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-<div class="container-fluid">
+<nav className="navbar navbar-expand-lg bg-body-tertiary">
+<div className="container-fluid">
     <Brand />
     <ButtonResponsive />
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <ItemFeatures isActive = {true} name = "Most played games" />
+    <div className="collapse navbar-collapse" id="navbarNav">
+        <ul className="navbar-nav">
+            <li className="nav-item">
+                <ItemFeatures isActive = {true} name = "Shooters" path={"shooters"}/>
             </li>
-            <li class="nav-item">
-                <ItemFeatures isActive = {true} name = "Shooters" />
+            <li className="nav-item">
+                <ItemFeatures isActive = {true} name = "SandBox" path={"sandbox"}/>
             </li>
-            <li class="nav-item">
-                <ItemFeatures isActive = {true} name = "SandBox" />
-            </li>
-            <li class="nav-item">
-                <ItemFeatures isActive = {true} name = "Sports" />
+            <li className="nav-item">
+                <ItemFeatures isActive = {true} name = "Sports" path={"sports"}/>
             </li>
         </ul>
     </div>

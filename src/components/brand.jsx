@@ -1,6 +1,6 @@
 
 const Brand = () => {
-    return (<a class="navbar-brand" href="#">Game 24/7</a>
+    return (<a className="navbar-brand" href="/">Game 24/7</a>
     )
 }
 

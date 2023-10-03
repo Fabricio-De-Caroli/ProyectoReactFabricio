@@ -1,7 +1,7 @@
 
-const ItemFeatures = ({isActive = false, name}) =>{
+const ItemFeatures = ({isActive = false, name, path}) =>{
     return(
-        <a class={`nav-link ${isActive ? "active" : null}`} aria-current="page" href="#">{name}</a>
+        <a className={`nav-link ${isActive ? "active" : null}`} aria-current="page" href= {`/${path}`}>{name}</a>
     )
 }
 
