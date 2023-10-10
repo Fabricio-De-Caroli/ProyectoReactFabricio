@@ -1,7 +1,24 @@
-import React from 'react'
-import {products} from "../../Productos.js"
+import React, { useState } from 'react'
+
+import { Link } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
+import { useProducts } from '../../Productos.js'
+
+
 
 function CardSection() {
+  const [products, setProducts] = useState([])
+  const {id} = useParams()
+  async function fetchingData(){
+    try{
+      const datos = await useProducts()
+      return datos
+    }catch(err){
+      console.log(err)
+    }
+  }
+
+fetchingData().then(datos => setProducts(datos))
   return (
     <>
     	{
@@ -11,7 +28,7 @@ function CardSection() {
             <div className="card-body">
                 <h5 className="card-title">{ x.title }</h5>
                 <p className="card-text">{x.description}</p>
-                <a href= {`/category/${ x.id }`} className="btn btn-primary">more info</a>
+                <Link to= {`/category/${ x.id}`} className="btn btn-primary">more info</Link>
             </div>
           </div>
         )

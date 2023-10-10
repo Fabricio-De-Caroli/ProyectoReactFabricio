@@ -40,3 +40,12 @@ export const products = [
         stock:150
     }
 ]
+
+export const useProducts = () =>{
+    return new Promise((resolve, reject) =>{
+    setTimeout(() =>{
+        resolve(products)
+    },3000)
+})} 
+
+

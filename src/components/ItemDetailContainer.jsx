@@ -3,7 +3,6 @@ import {products} from "../Productos"
 import { useParams } from 'react-router-dom'
 import ButtonDetail from "../components/ButtonDetail"
 import ItemCount from './ItemCount'
-
 function ItemDetailContainer() {
   const {id} = useParams()
   const itemDetail = products.find(x => x.id == id)
