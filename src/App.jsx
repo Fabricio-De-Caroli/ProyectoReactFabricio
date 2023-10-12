@@ -7,6 +7,7 @@ import Shooters from "./views/Shooters"
 import Sandboxs from "./views/SandBoxs"
 import Sports from "./views/Sports"
 import ItemDetailContainer from "./components/ItemDetailContainer"
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
