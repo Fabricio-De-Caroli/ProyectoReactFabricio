@@ -6,7 +6,7 @@ export default function ItemListContainer(){
   <>
     
     {<div style={{display:'flex', justifyContent:'space-around'}}>
-      <CardSection/>
+      {<CardSection/>}
     </div>}
   </>
   )

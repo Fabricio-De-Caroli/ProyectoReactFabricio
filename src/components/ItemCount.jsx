@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import {products} from "../../src/Productos"
 import { useParams } from "react-router-dom";
+import CartContext from '../context/cart.context'
 
 const ItemCount = () => {
-const [count, setCount] = useState(0);
+const [count, setCount] = useState(1);
 const {id} =useParams()
+const {getCount} = useContext(CartContext);
 
 const increment = ()=>{
     if(count == products[id - 1].stock){
@@ -23,12 +25,12 @@ const decrement = () =>{
     }
 };
 
-    return (
-        <div style={{display:"flex", justifyContent:"center"}}>
-            <button type="button" class="btn btn-primary" onClick={decrement}>-</button>
-            <button type="button" class="btn btn-outline-secondary">{count}</button>
-            <button type="button" class="btn btn-primary" onClick={increment}>+</button>
-        </div>
+return (
+    <div style={{display:"flex", justifyContent:"center"}}>
+            <button type="button" className="btn btn-primary" onClick={decrement}>-</button>
+            <button type="button" className="btn btn-outline-secondary">{count}</button>
+            <button type="button" className="btn btn-primary" onClick={increment}>+</button>
+    </div>
     )
 }
 

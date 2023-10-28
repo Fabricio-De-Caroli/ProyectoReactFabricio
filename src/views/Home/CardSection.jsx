@@ -1,33 +1,31 @@
-import React, { useState } from 'react'
-
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { useParams } from 'react-router-dom'
-import { useProducts } from '../../Productos.js'
 import * as bootstrap from 'bootstrap'
-
+import { getFirestore, collection, getDocs, doc} from "firebase/firestore";
 
 function CardSection() {
-  const [products, setProducts] = useState([])
-  const {id} = useParams()
-  async function fetchingData(){
-    try{
-      const datos = await useProducts()
-      return datos
-    }catch(err){
-      console.log(err)
-    }
-  }
+  const [items, setItems] = useState([]);
 
-fetchingData().then(datos => setProducts(datos))
+  useEffect(() =>{
+    const db = getFirestore();
+
+    const itemref = collection(db, "Items")
+    getDocs(itemref).then((snapshot) => {
+      if(snapshot.size === 0){
+        console.log("No results");
+      }
+      setItems(snapshot.docs.map((doc) => ({id: doc.id, ...doc.data()})))
+    })
+  },[])
   return (
     <>
     	{
-      	products.map( ( x, index ) =>
+      	items.map( ( x, index ) =>
           <div className="card" key={index} style={{width: "18rem"}}>
-            <img src={x.src} className="card-img-top" alt= { x.title }/>
+            <img src={x.Source} className="card-img-top" alt= {x.Title }/>
             <div className="card-body">
-                <h5 className="card-title">{ x.title }</h5>
-                <p className="card-text">{x.description}</p>
+                <h5 className="card-title">{ x.Title }</h5>
+                <p className="card-text">{x.Description}</p>
                 <Link to= {`/category/${ x.id}`} className="btn btn-primary">more info</Link>
             </div>
           </div>
@@ -35,6 +33,5 @@ fetchingData().then(datos => setProducts(datos))
       }
     </>
   )
-}
-
+    }
 export default CardSection

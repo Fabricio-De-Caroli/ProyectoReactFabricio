@@ -1,5 +1,5 @@
 import ButtonResponsive from "./Button"
-import CartContainer from "./CartContainer"
+import CartContainer from "./CartWidget"
 import ItemFeatures from "./ItemFeatures"
 import Brand from "./brand"
 
@@ -11,9 +11,6 @@ const NavBar = ()=>{
     <ButtonResponsive />
     <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav">
-            <li className="nav-item">
-                <ItemFeatures isActive = {true} name = "Shooters" path={"shooters"}/>
-            </li>
             <li className="nav-item">
                 <ItemFeatures isActive = {true} name = "SandBox" path={"sandbox"}/>
             </li>
